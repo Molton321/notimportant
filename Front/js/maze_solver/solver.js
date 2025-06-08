@@ -39,7 +39,6 @@ class MazeSolver {
             console.log("¡Solución encontrada!");
             const sol_msg = "Solución encontrada.";
             this.pathLog.push(sol_msg);
-
             this.solutionPath.forEach((step, index) => {
                 const logMsg = `Paso ${index}: Celda [${step.fila}, ${step.columna}], Carga restante: ${step.chargeAfterCell.toFixed(2)}, Acción: ${step.action}`;
                 console.log(logMsg); // Mostrar paso de la solución inmediatamente

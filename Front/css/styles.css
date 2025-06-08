@@ -612,15 +612,267 @@ body {
     background-color: #38a169;
 }
 
-/* Path Visualization Styles */
-.matrix-cell.path-cell {
+/* Styles for table_page.html */
+.table-page-layout {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.table-page-layout .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.table-page-layout .header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.table-page-layout .header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.table-page-layout .header .logo i {
+    font-size: 2em;
+    color: #007bff; /* Primary color */
+    margin-right: 10px;
+}
+
+.table-page-layout .header h1 {
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+}
+
+.table-page-layout .subtitle {
+    font-size: 1em;
+    color: #666;
+}
+
+.table-page-layout .maze-section {
+    text-align: center;
+}
+
+.table-page-layout .maze-controls {
+    margin-bottom: 20px;
+}
+
+.table-page-layout #next-step-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.table-page-layout #next-step-button:hover {
+    background-color: #0056b3;
+}
+
+.table-page-layout #next-step-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.table-page-layout #solution-status {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #555;
+    min-height: 20px;
+}
+
+.table-page-layout #matrix-container { /* Adapted from matrixGridContainer */
+    display: grid;
+    border: 1px solid #ccc; /* Lighter border */
+    margin: 20px auto; /* Centered */
+    justify-content: center; /* Center grid items if grid itself is wider */
+    background-color: #f9f9f9; /* Light background for the grid */
+    padding: 5px; /* Padding around the cells */
+    border-radius: 4px;
+}
+
+.table-page-layout .matrix-cell {
+    width: 28px; /* Slightly smaller for potentially large matrices */
+    height: 28px;
+    border: 1px solid #ddd; /* Lighter cell borders */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7em; /* Smaller font for cell content */
+    box-sizing: border-box;
+    background-color: #fff; /* Default cell background */
+    color: #333; /* Default text color for costs */
+    font-weight: 500;
+}
+
+.table-page-layout .cell-icon {
+    width: 70%; /* Adjust icon size within cell */
+    height: 70%;
+    object-fit: contain;
+}
+
+.table-page-layout .black-hole-cell,
+.table-page-layout .star-cell,
+.table-page-layout .wormhole-cell,
+.table-page-layout .recharge-cell {
+    background-color: #e9ecef; /* Slightly different background for icon cells if needed */
+}
+
+.table-page-layout .spaceship { /* Current position of the spaceship */
+    background-color: #28a745 !important; /* Green for spaceship */
+    color: white;
+    font-weight: bold;
+    border: 2px solid #1e7e34; /* Darker green border */
+}
+
+.table-page-layout .origin {
+    background-color: #ffc107; /* Yellow for origin */
+    color: #333;
+}
+
+.table-page-layout .destination {
+    background-color: #dc3545; /* Red for destination */
+    color: white;
+}
+
+.table-page-layout .black-hole {
+    background-color: #343a40; /* Dark grey for black hole */
+    color: white;
+}
+
+.table-page-layout .path { /* Cells that are part of the solution path already traversed */
+    background-color: #17a2b8; /* Cyan for path */
+    opacity: 0.7;
+}
+
+.table-page-layout .current-step { /* More specific highlighting for the current step if needed, can be same as .spaceship */
+    background-color: #28a745 !important;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #1e7e34;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.7); /* Glow effect */
+}
+
+.table-page-layout .footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.table-page-layout .footer a.validate-btn { /* Style for the return button */
+    color: #fff;
+    background-color: #6c757d; /* Secondary button color */
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 20px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.table-page-layout .footer a.validate-btn:hover {
+    background-color: #5a6268;
+}
+
+/* New styles for file upload section in table_page.html */
+.table-page-layout .file-load-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-page-layout .input-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-page-layout .input-section h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.table-page-layout .file-input-wrapper {
+    margin-bottom: 15px;
+}
+
+.table-page-layout .file-input {
+    display: none; /* Hides the default file input */
+}
+
+.table-page-layout .file-label {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.table-page-layout .file-label:hover {
+    background-color: #0056b3;
+}
+
+.table-page-layout #fileName {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.table-page-layout #loadMatrixButton {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.table-page-layout #loadMatrixButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Path Visualization Styles (already in styles.css, ensure no conflict or adapt if specific to table_page) */
+/* These might be general enough, or prefix with .table-page-layout if they are truly specific */
+.table-page-layout .matrix-cell.path-cell {
     background-color: rgba(0, 255, 0, 0.3); /* Light green for path */
 }
 
-.matrix-cell.path-start {
+.table-page-layout .matrix-cell.path-start {
     background-color: rgba(0, 0, 255, 0.5); /* Blue for start */
 }
 
-.matrix-cell.path-end {
+.table-page-layout .matrix-cell.path-end {
     background-color: rgba(255, 0, 0, 0.5); /* Red for end */
 }
